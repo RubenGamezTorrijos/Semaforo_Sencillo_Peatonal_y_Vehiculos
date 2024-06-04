@@ -11,23 +11,23 @@ Este programa implementa un semáforo sencillo para peatones y vehículos utiliz
 ## Funcionamiento
 El semáforo sigue un ciclo continuo a través de las tres fases, con un tiempo específico para cada fase. Además, el botón conectado al pin 6 del puerto D puede ser usado para reiniciar el semáforo, volviendo al inicio del ciclo en la fase 1.
 
-## Detalles del Código
-El código está escrito en lenguaje ensamblador para el microcontrolador ATmega328P. Se organizan las fases del semáforo en subrutinas y se utiliza un bucle principal para ejecutarlas en secuencia. Se implementan retardos para controlar la duración de cada fase.
-
-### Subrutinas
-- `delay_5s`: Retardo de 5 segundos.
-- `delay_1s`: Retardo de 1 segundo.
-- `delay_05s`: Retardo de 0.5 segundos.
-
-### Fases del Semáforo
-1. Fase 1: Rojo para vehículos y Verde para peatones.
-2. Fase 2: Rojo para vehículos y Verde para peatones parpadeando.
-3. Fase 3: Amarillo para vehículos y Verde para peatones parpadeando.
-4. Fase 4: Verde para vehículos y Rojo para peatones.
-5. Fase 5: Amarillo para vehículos y Rojo para peatones.
-
 ## Uso en Wokwi.com
 Para utilizar este código en Wokwi.com, puedes copiar y pegar el código en un nuevo sketch en el editor de código de Wokwi. Asegúrate de seleccionar el microcontrolador ATmega328P y de conectar los LEDs y el botón según las especificaciones del hardware.
 
+## Uso en Arduino Uno con IDE de Arduino
+Para usar este código en Arduino Uno con el IDE de Arduino, sigue estos pasos:
+
+1. Abre el IDE de Arduino.
+2. Crea un nuevo sketch.
+3. Copia y pega el código en el sketch.
+4. Guarda el sketch con un nombre descriptivo, por ejemplo, "Semaforo_Sencillo.ino".
+5. Conecta tu Arduino Uno a tu computadora.
+6. Selecciona el tipo de placa "Arduino Uno" en el menú Herramientas > Placa.
+7. Selecciona el puerto adecuado en el menú Herramientas > Puerto.
+8. Verifica el código haciendo clic en el botón "Verificar" (✓).
+9. Sube el código a tu Arduino haciendo clic en el botón "Subir" (➡).
+10. Observa el funcionamiento del semáforo utilizando los LEDs y el botón conectados a tu Arduino Uno.
+
 ## Licencia
 Este código está protegido por una licencia de uso personal. No se permite su reproducción o distribución sin el permiso del autor. Puedes usarlo para fines personales o educativos, pero debes reconocer al autor original.
+
