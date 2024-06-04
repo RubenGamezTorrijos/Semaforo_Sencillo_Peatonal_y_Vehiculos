@@ -1,6 +1,6 @@
 ;
 ;  Program: Semaforo_Sencillo_Peatonal_y_Vehiculos.S
-;  Description: Semáforo Blink a LED connected to the port B of the ATmega328P
+;  Description: Semáforo Sencillo Peatonal y Vehículos conexión LED al puerto B del ATmega328P
 ;  Author: Rubén Gámez Torrijos
 ;  Created: 04/06/2024
 ;
