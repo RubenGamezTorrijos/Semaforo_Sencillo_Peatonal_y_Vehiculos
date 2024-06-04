@@ -1,4 +1,4 @@
-# Semaforo_1_Sencillo
+# Semáforo 1 Sencillo Peatonal y Vehículos
 
 ## Descripción
 Este programa implementa un semáforo sencillo para peatones y vehículos utilizando un microcontrolador ATmega328P. El semáforo consta de tres fases para vehículos y peatones: Rojo para vehículos y Verde para peatones, Amarillo para vehículos y Verde para peatones parpadeando, y Verde para vehículos y Rojo para peatones.
