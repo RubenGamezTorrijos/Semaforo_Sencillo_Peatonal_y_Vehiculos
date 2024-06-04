@@ -1,78 +1,167 @@
-.equ PIN_VERDE_COCHES, 0   ; PB0
-.equ PIN_AMARILLO_COCHES, 1 ; PB1
-.equ PIN_ROJO_COCHES, 2    ; PB2
-.equ PIN_VERDE_PEATONES, 2 ; PD2
-.equ PIN_ROJO_PEATONES, 3  ; PD3
+;
+;  Program: SemaforoSencillo.S
+;  Description: Semáforo Blink a LED connected to the port B of the ATmega328P
+;  Author: Rubén Gámez Torrijos
+;  Created: 04/06/2024
+;
 
-.equ DELAY_5_SECONDS, 50    ; 50 unidades de 100 ms = 5000 ms
-.equ DELAY_2_SECONDS, 20    ; 20 unidades de 100 ms = 2000 ms
+#define __SFR_OFFSET 0
+#include <avr/io.h>
 
-.equ DDRB_ADDR, 0x04        ; Dirección del registro de datos del puerto B
-.equ DDRD_ADDR, 0x0A        ; Dirección del registro de datos del puerto D
-.equ PORTB_ADDR, 0x05       ; Dirección del puerto B
-.equ PORTD_ADDR, 0x0B       ; Dirección del puerto D
+.org 0
+rjmp setup
 
-.macro SET_BIT port, bit
-    sbi \port, \bit
-.endm
-
-.macro CLEAR_BIT port, bit
-    cbi \port, \bit
-.endm
-
-.section .text
+setup:
 .global main
-.type main, @function
+
 main:
-    ; Configurar pines como salida
-    ldi r16, (1 << PIN_VERDE_COCHES) | (1 << PIN_AMARILLO_COCHES) | (1 << PIN_ROJO_COCHES)
-    out DDRB_ADDR, r16
-    ldi r16, (1 << PIN_VERDE_PEATONES) | (1 << PIN_ROJO_PEATONES)
-    out DDRD_ADDR, r16
+  ; Configura los bits 0, 1 y 2 del puerto B como salidas (LEDs Coches)
+  ; Configura los bits 2 y 3 del puerto D como salidas (LEDs Peatones)
+  ldi r16, 0b00000111
+  out _SFR_IO_ADDR(DDRB), r16
+  ldi r16, 0b00001100
+  out _SFR_IO_ADDR(DDRD), r16
+
+  ; Inicializa los puertos B y D a 0
+  ldi r17, 0x00
+  out _SFR_IO_ADDR(PORTB), r17
+  out _SFR_IO_ADDR(PORTD), r17
 
 loop:
-    ; Fase 1: Coches en verde, peatones en rojo
-    CLEAR_BIT PORTB_ADDR, PIN_AMARILLO_COCHES
-    CLEAR_BIT PORTB_ADDR, PIN_ROJO_COCHES
-    SET_BIT PORTB_ADDR, PIN_VERDE_COCHES
-    CLEAR_BIT PORTD_ADDR, PIN_VERDE_PEATONES
-    SET_BIT PORTD_ADDR, PIN_ROJO_PEATONES
-    call delay_5_seconds
+  ; Fase 1: Rojo Coches y Verde Peatones
+  ldi r17, 0b00000100
+  out _SFR_IO_ADDR(PORTB), r17
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_5s
 
-    ; Fase 2: Coches en amarillo, peatones en rojo
-    CLEAR_BIT PORTB_ADDR, PIN_VERDE_COCHES
-    SET_BIT PORTB_ADDR, PIN_AMARILLO_COCHES
-    call delay_2_seconds
+  ; Fase 2: Rojo Coches y Verde Peatones parpadeando a 1 segundo durante 5 segundos
+  ldi r17, 0b00000100
+  out _SFR_IO_ADDR(PORTB), r17
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_1s
+  
 
-    ; Fase 3: Coches en rojo, peatones en verde
-    CLEAR_BIT PORTB_ADDR, PIN_AMARILLO_COCHES
-    SET_BIT PORTB_ADDR, PIN_ROJO_COCHES
-    CLEAR_BIT PORTD_ADDR, PIN_ROJO_PEATONES
-    SET_BIT PORTD_ADDR, PIN_VERDE_PEATONES
-    call delay_5_seconds
+  ; Fase 3: Amarillo Coches y Verde Peatones parpadeando a 0.5 segundos durante 5 segundos
+  ldi r17, 0b00000010
+  out _SFR_IO_ADDR(PORTB), r17
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0x00
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_05s
+  
 
-    ; Fase 4: Coches en rojo, peatones en rojo
-    CLEAR_BIT PORTD_ADDR, PIN_VERDE_PEATONES
-    call delay_5_seconds
+  ; Fase 4: Verde Coches y Rojo Peatones
+  ldi r17, 0b00000001
+  out _SFR_IO_ADDR(PORTB), r17
+  ldi r18, 0b00001000
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_5s
+  
 
-    rjmp loop
+  rjmp loop
 
-delay_5_seconds:
-    ldi r16, DELAY_5_SECONDS
-    call delay_loop
-    ret
-
-delay_2_seconds:
-    ldi r16, DELAY_2_SECONDS
-    call delay_loop
-    ret
-
-delay_loop:
-    ldi r17, 100
-inner_loop:
+delay_5s:
+  ; Retardo de 5 segundos
+  ldi  r20, 205
+  ldi  r21, 51
+  ldi  r22, 0
+L2: dec  r22
+    brne L2
+    dec  r21
+    brne L2
+    dec  r20
+    brne L2
+    lpm
     nop
-    dec r17
-    brne inner_loop
-    dec r16
-    brne delay_loop
+    ret
+
+delay_1s:
+  ; Retardo de 1 segundo
+  ldi  r20, 41
+  ldi  r21, 8
+  ldi  r22, 0
+L3: dec  r22
+    brne L3
+    dec  r21
+    brne L3
+    dec  r20
+    brne L3
+    lpm
+    nop
+    ret
+
+delay_05s:
+  ; Retardo de 0.5 segundos
+  ldi  r20, 20
+  ldi  r21, 4
+  ldi  r22, 0
+L4: dec  r22
+    brne L4
+    dec  r21
+    brne L4
+    dec  r20
+    brne L4
+    lpm
+    nop
     ret
