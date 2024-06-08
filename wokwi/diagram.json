@@ -6,36 +6,36 @@
     {
       "type": "wokwi-led",
       "id": "verdeCoches",
-      "top": 40,
-      "left": 100,
+      "top": 82.8,
+      "left": 205.4,
       "attrs": { "color": "green" }
     },
     {
       "type": "wokwi-led",
       "id": "amarilloCoches",
-      "top": 80,
-      "left": 100,
+      "top": 82.8,
+      "left": 167,
       "attrs": { "color": "yellow" }
     },
     {
       "type": "wokwi-led",
       "id": "rojoCoches",
-      "top": 120,
-      "left": 100,
+      "top": 82.8,
+      "left": 128.6,
       "attrs": { "color": "red" }
     },
     {
       "type": "wokwi-led",
       "id": "verdePeatones",
-      "top": 40,
-      "left": 200,
+      "top": 82.8,
+      "left": 320.6,
       "attrs": { "color": "green" }
     },
     {
       "type": "wokwi-led",
       "id": "rojoPeatones",
-      "top": 80,
-      "left": 200,
+      "top": 82.8,
+      "left": 291.8,
       "attrs": { "color": "red" }
     },
     {
@@ -45,18 +45,18 @@
       "left": 200,
       "attrs": { "color": "blue" }
     },
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": 200, "left": 100, "attrs": {} }
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 202.2, "left": 95.4, "attrs": {} }
   ],
   "connections": [
-    [ "rojoCoches:A", "uno:10", "green", [ "v0" ] ],
-    [ "amarilloCoches:A", "uno:9", "green", [ "v0" ] ],
-    [ "verdeCoches:A", "uno:8", "green", [ "v0" ] ],
-    [ "rojoCoches:C", "uno:GND.1", "green", [ "v0" ] ],
-    [ "amarilloCoches:C", "uno:GND.1", "green", [ "v0" ] ],
-    [ "verdeCoches:C", "uno:GND.1", "green", [ "v0" ] ],
-    [ "rojoPeatones:C", "uno:GND.1", "green", [ "v0" ] ],
-    [ "verdePeatones:C", "uno:GND.1", "green", [ "v0" ] ],
-    [ "rojoPeatones:A", "uno:3", "green", [ "v0" ] ],
+    [ "rojoCoches:A", "uno:10", "red", [ "v38.4", "h99.9" ] ],
+    [ "amarilloCoches:A", "uno:9", "yellow", [ "v28.8", "h71" ] ],
+    [ "verdeCoches:A", "uno:8", "green", [ "v19.2", "h42.6" ] ],
+    [ "rojoCoches:C", "uno:GND.1", "black", [ "v57.6", "h77.2", "v26.6" ] ],
+    [ "amarilloCoches:C", "uno:GND.1", "black", [ "v57.6", "h38.8", "v26.6" ] ],
+    [ "verdeCoches:C", "uno:GND.1", "black", [ "v0" ] ],
+    [ "rojoPeatones:C", "uno:GND.1", "black", [ "v57.6", "h-76.4", "v26.6" ] ],
+    [ "verdePeatones:C", "uno:GND.1", "black", [ "h0.4", "v57.6", "h-116", "v26.6" ] ],
+    [ "rojoPeatones:A", "uno:3", "red", [ "v28.8", "h9.6", "v57.6" ] ],
     [ "verdePeatones:A", "uno:2", "green", [ "v0" ] ],
     [ "pulsadorPin:1", "uno:6", "green", [ "v0" ] ],
     [ "pulsadorPin:2", "uno:GND.1", "green", [ "v0" ] ]
