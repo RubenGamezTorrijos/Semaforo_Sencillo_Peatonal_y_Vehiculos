@@ -1,6 +1,7 @@
 ;
-;  Program: Semaforo_Sencillo_Peatonal_y_Vehiculos.S
-;  Description: Semáforo Sencillo Peatonal y Vehículos conexión LED al puerto B del ATmega328P
+;  Program: Semaforo_1_Sencillo.S
+;  Description: Semáforo Sencillo Peatonal y Vehículos
+;  LED conectado al puerto B del ATmega328P.
 ;  Author: Rubén Gámez Torrijos
 ;  Created: 04/06/2024
 ;
@@ -34,6 +35,10 @@ loop:
   ldi r18, 0b00000100
   out _SFR_IO_ADDR(PORTD), r18
   call delay_5s
+  ldi r18, 0b00000100
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_5s
+  
 
   ; Fase 2: Rojo Coches y Verde Peatones parpadeando a 1 segundo durante 5 segundos
   ldi r17, 0b00000100
@@ -117,7 +122,19 @@ loop:
   ldi r18, 0b00001000
   out _SFR_IO_ADDR(PORTD), r18
   call delay_5s
+  ldi r18, 0b00001000
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_5s
   
+  ; Fase 5: Amarillo Coches y Rojo Peatones
+  ldi r17, 0b00000010
+  out _SFR_IO_ADDR(PORTB), r17
+  ldi r18, 0b00001000
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_5s
+  ldi r18, 0b00001000
+  out _SFR_IO_ADDR(PORTD), r18
+  call delay_5s
 
   rjmp loop
 
