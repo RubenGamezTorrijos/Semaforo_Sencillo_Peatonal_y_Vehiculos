@@ -12,6 +12,8 @@ Este programa implementa un semáforo sencillo para peatones y vehículos utiliz
 - LEDs para peatones conectados al puerto D, bits 2 y 3.
 - Un botón para reiniciar el semáforo conectado al pin 6 del puerto D.
 
+![Wokwi_Arduino_5_Leds](https://github.com/RubenGamezTorrijos/Semaforo_Sencillo_Peatonal_y_Vehiculos/assets/19588354/dbac5036-c979-4495-a6fe-ee1ace8fdf2a)
+
 ## Funcionamiento
 El semáforo sigue un ciclo continuo a través de las tres fases, con un tiempo específico para cada fase. Además, el botón conectado al pin 6 del puerto D puede ser usado para reiniciar el semáforo, volviendo al inicio del ciclo en la fase 1.
 
