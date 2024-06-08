@@ -1,5 +1,9 @@
 # Semáforo 1 Sencillo Peatonal y Vehículos
 
+![YouTube_RubenGamezTorrijos_UE_EstructuraComputadores_Semaforo_Sencillo_Actividad_1](https://github.com/RubenGamezTorrijos/Semaforo_Sencillo_Peatonal_y_Vehiculos/assets/19588354/a2fa2b3b-7026-41c3-8532-6e5819f5ba16)
+
+Ver vídeo en YouTube: https://www.youtube.com/watch?v=hO9MEJkecGg
+
 ## Descripción
 Este programa implementa un semáforo sencillo para peatones y vehículos utilizando un microcontrolador ATmega328P. El semáforo consta de tres fases para vehículos y peatones: Rojo para vehículos y Verde para peatones, Amarillo para vehículos y Verde para peatones parpadeando, y Verde para vehículos y Rojo para peatones.
 
